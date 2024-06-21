@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
   res.json(database.getAllMovies());
 })
 
+app.get('/:id', (req, res) => {
+  res.json(database.getMovie());
+})
+
 app.post('/', (req, res) => {
   res.json({ message: 'This is a POST request' });
 

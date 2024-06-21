@@ -32,7 +32,12 @@ class Database {
     getAllMovies() {
         return this.movies;
     }
-}
+
+getMovie() {
+    let result = this.movies.filter(obj => {
+      return obj.id === 1 });
+    return result;
+}}
 
 const instance = new Database();
 

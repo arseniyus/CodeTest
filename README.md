@@ -17,10 +17,13 @@ The app will be running at [http://localhost:3000](http://localhost:3000).
 - Show off technical skills, but don't fall down rabbit holes. Stay task focused.
 
 ## TODO List
-You will have 30 mins to implement as many of these as you can. You're not expected to finish them all.
-1. Add an endpoint to create a movie in the same format.
-1. Create an endpoint to delete a movie. 
-1. Create an endpoint to filter movies by year and then test with the year 1999 (you should get two movies).
-1. Create an endpoint to filter movies by rating. (Movies with a rating of 5 or more for example).
-1. Create an endpoint to update a movie.
-1. Create an endpoint to get a single movie (by any means you choose).
+You will have 30 mins to implement as many of these as you can.  You're not expected to finish them all.
+1. Add an endpoint to create a movie in the same format. 
+2. Create an endpoint to delete a movie. 
+3. Create an endpoint to filter movies by year and then test with the year 1999 (you should get two movies).
+4. Create an endpoint to filter movies by rating. (Movies with a rating of 5 or more for example).
+5. Create an endpoint to update a movie.
+6. Create an endpoint to get a single movie (by any means you choose).✅
+
+// CRUD Operations
+is Create 
