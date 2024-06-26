@@ -46,7 +46,16 @@ class Database {
         
     }
 
-} 
+    deleteMovie(movieId) {
+        const result = this.movies.findIndex(movie => movie.id === movieId);
+
+        if (result === -1)
+            return null;
+
+        const deletedMovie = this.movies.splice(result, 1)[0];
+        return deletedMovie;
+    }
+}  
 
 const instance = new Database();
 

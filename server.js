@@ -30,6 +30,17 @@ app.post('/', (req, res) => {
   return res.status(201).json(addResult);
 });
 
+app.delete('/:id', (req, res) => {
+  const movieId = parseInt(req.params.id)
+  const deletedMovie = database.deleteMovie(movieId);
+
+  if (!deletedMovie) {
+    return res.status(404).json({ message: "Movie not found" });
+  }
+
+   return res.status(200).json({deletedMovie, message: "Movie successfully deleted"});
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
