@@ -30,6 +30,9 @@ class Database {
     }
 
     getAllMovies() {
+        this.movies.forEach((movie, index) => {
+            console.log(`Movie ${index + 1}: Year data type is ${typeof movie.year}`);
+          });
         return this.movies;
     }
 
@@ -47,7 +50,7 @@ class Database {
     }
 
     deleteMovie(movieId) {
-        const result = this.movies.findIndex(movie => movie.id === movieId);
+        const result = this.movies.findIndex(movie => movie.id === parseInt(movieId));
 
         if (result === -1)
             return null;
@@ -55,6 +58,28 @@ class Database {
         const deletedMovie = this.movies.splice(result, 1)[0];
         return deletedMovie;
     }
+
+    filterMovie(year) {
+        console.log("Filtering movies for:", year);
+
+        if (isNaN(year)) {
+            console.error("Invalid year:", year);
+            return [];
+        }
+    
+        // Log the movies array
+        console.log("Movies array:", this.movies);
+
+        const filteredMovies = this.movies.filter(movie => { 
+            console.log(`Checking movie with year ${movie.year} against ${year}`);
+            return movie.year === year;
+        });
+
+        console.log("Filtered movies:", filteredMovies)
+        
+        return filteredMovies;
+    }
+
 }  
 
 const instance = new Database();

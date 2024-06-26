@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
 });
 
 app.delete('/:id', (req, res) => {
-  const movieId = parseInt(req.params.id)
+  const movieId = parseInt(req.params.id);
   const deletedMovie = database.deleteMovie(movieId);
 
   if (!deletedMovie) {
@@ -39,6 +39,20 @@ app.delete('/:id', (req, res) => {
   }
 
    return res.status(200).json({deletedMovie, message: "Movie successfully deleted"});
+});
+
+app.get('/:year', (req, res) => {
+  const year = parseInt(req.params.year);
+  console.log("Received request for movies in year:", year);
+
+  const filteredMovies = database.filterMovie(year);
+  console.log("Filtered movies:", filteredMovies);
+
+  if (filteredMovies.length === 0) {
+    return res.status(404).json({ message: "No movies found" });
+  }
+    return res.status(200).json({ filteredMovies })
+
 });
 
 app.listen(port, () => {
