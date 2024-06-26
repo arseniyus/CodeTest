@@ -16,11 +16,18 @@ app.get('/:id', (req, res) => {
 })
 
 app.post('/', (req, res) => {
+
   if (!req.body) {
     return res.status(400).json({ message: "Request body is missing." });
+  };
+
+  const { title, year, director, genre, rating } = req.body;
+  const addResult = database.addMovie(title, year, director, genre, rating);  
+
+  if (!addResult) {
+    return res.status(500).json({message: "Failed to add movie"})
   }
-  
-  database.addMovie(req, res);
+  return res.status(201).json(addResult);
 });
 
 app.listen(port, () => {

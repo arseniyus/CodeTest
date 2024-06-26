@@ -39,22 +39,15 @@ class Database {
         return result;
     }
   
-    addMovie(req, res) {
-        const { title, year, director, genre, rating } = req.body;
-       
+    addMovie(title, year, director, genre, rating) {
         const newMovie = { id: this.movies.length + 1, title, year, director, genre, rating };
         this.movies.push(newMovie); 
+        return newMovie
         
-        fs.writeFile("movies.json", JSON.stringify(this.movies),(err) => {
-        if (err) {
-            return res.status(500).json({ message: "Error writing to file." });
-        }
-        res.status(201).json({ newMovie, message: "Movie successfully added and saved to file"});
-    });
-    
-    } 
+    }
 
-}
+} 
+
 const instance = new Database();
 
 module.exports = instance;
