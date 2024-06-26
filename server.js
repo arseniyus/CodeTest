@@ -5,6 +5,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.json(database.getAllMovies());
 })
@@ -14,8 +16,11 @@ app.get('/:id', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  res.json({ message: 'This is a POST request' });
-
+  if (!req.body) {
+    return res.status(400).json({ message: "Request body is missing." });
+  }
+  
+  database.addMovie(req, res);
 });
 
 app.listen(port, () => {
